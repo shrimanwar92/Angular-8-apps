@@ -34,16 +34,20 @@ describe('Heroes Component', () => {
 
   it(`should have the ability to select hero`, () => {
     const fixture = TestBed.createComponent(HeroesComponent);
+    fixture.componentInstance.heroes = [
+          { id: 1, name: 'test1' },
+          { id: 2, name: 'test2' },
+    ];
     fixture.detectChanges();
 
     let lis = fixture.nativeElement.querySelectorAll('li');
     lis[0].click();
     fixture.detectChanges();
 
-    expect(fixture.componentInstance.selectedHero.id).toBe(11);
-    expect(fixture.componentInstance.selectedHero.name).toBe('Dr Nice');
+    expect(fixture.componentInstance.selectedHero.id).toBe(1);
+    expect(fixture.componentInstance.selectedHero.name).toBe('test1');
     expect(lis[0].classList.contains('selected')).toBe(true);
-    expect(fixture.nativeElement.querySelector('.selected .hero-name').textContent).toEqual('Dr Nice');
+    expect(fixture.nativeElement.querySelector('.selected .hero-name').textContent).toEqual('test1');
   });
 
   @Component({
@@ -51,11 +55,6 @@ describe('Heroes Component', () => {
       template: `<app-heroes></app-heroes>`
   })
 
-  class TestComponent {
-      heroes = [
-          { id: 1, name: 'test1' },
-          { id: 2, name: 'test2' },
-      ];
-  }
+  class TestComponent {}
 
 });
