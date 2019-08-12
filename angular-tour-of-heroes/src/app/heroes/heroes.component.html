@@ -11,15 +11,4 @@
 	</ul>
 </div>
 
-<div class="heroes-component__details" *ngIf="selectedHero">
-	<h2>{{selectedHero.name | uppercase}} Details</h2>
-	<div class="id"><span>id: </span>{{selectedHero.id}}</div>
-	<div class="name"><span>Name: </span>{{selectedHero.name}}</div>
-
-	<div>
-		<label>
-			name: 
-			<input [(ngModel)]="selectedHero.name" placeholder="name">
-		</label>
-	</div>
-</div>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
