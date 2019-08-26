@@ -1,0 +1,47 @@
+<div class="shipment-details__shipment">
+    <div class="heading">
+        <a class="back" [routerLink]="['/']"> << Back</a>
+        <span>{{shipment.name}}</span>
+    </div>
+    <dl>
+        <div class="item"><dt>Id</dt>
+        <dd>{{shipment.id}}</dd></div>
+
+        <div class="item"><dt>Mode</dt>
+        <dd>{{shipment.mode}}</dd></div>
+
+        <div class="item"><dt>Type</dt>
+        <dd>{{shipment.type}}</dd></div>
+
+        <div class="item"><dt>Origin</dt>
+        <dd>{{shipment.origin}}</dd></div>
+
+        <div class="item"><dt>Destination</dt>
+        <dd>{{shipment.destination}}</dd></div>
+
+        <div class="item"><dt>Status</dt>
+        <dd>{{shipment.status}}</dd></div>
+
+        <div class="item"><dt>Total</dt>
+        <dd>{{shipment.total}}</dd></div>
+
+        <div class="item"><dt>User id</dt>
+        <dd>{{shipment.userId}}</dd></div>
+
+        <div class="item" *ngIf="shipment?.services?.length > 0"><dt>Services</dt>
+            <dd>
+                <span class="services" *ngFor="let s of shipment.services">{{s.type}}</span>
+            </dd>
+        </div>
+
+        <div class="item" *ngIf="shipment?.cargo?.length > 0"><dt>Cargo</dt>
+            <dd>
+                <ul *ngFor="let c of shipment.cargo">
+                    <li *ngIf="c.type"><span>Type: </span> {{c.type}}</li>
+                    <li *ngIf="c.description"><span>Description: </span> {{c.description}}</li>
+                    <li *ngIf="c.volume"><span>Volume: </span>{{c.volume}}</li>
+                </ul>
+            </dd>
+        </div>
+    </dl>
+</div>
